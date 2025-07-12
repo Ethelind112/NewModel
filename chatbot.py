@@ -7,9 +7,8 @@ from langchain_core.documents import Document
 
 from sentence_transformers import SentenceTransformer
 from langchain_core.embeddings import Embeddings
-import torch
 
-from langchain_chroma import Chroma
+from langchain.vectorstores import Chroma
 
 from langfuse.openai import OpenAI
 import os
@@ -21,7 +20,7 @@ import csv
 
 class LangchainE5Embedding(Embeddings):
     def __init__(self, model_name="intfloat/multilingual-e5-large", device=None):
-        self.device = device or ("cuda" if torch.cuda.is_available() else "cpu")
+        self.device = device
         self.model = SentenceTransformer(model_name, device=self.device)
 
     def embed_documents(self, texts: List[str]) -> List[List[float]]:
