@@ -1,0 +1,5 @@
+.env
+.venv/
+__pycache__/
+api_key.csv
+chroma_e5_database/
