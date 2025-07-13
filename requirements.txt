@@ -1,4 +1,4 @@
-attrs==0.3.2
+attrs==23.2.0
 brotli==1.1.0
 brotlicffi==1.1.0.0
 chardet==5.2.0
