@@ -15,7 +15,7 @@ import os
 from dotenv import load_dotenv
 import re
 from langfuse import Langfuse
-from langfuse import observe
+from langfuse.decorator import observe
 import csv
 
 class LangchainE5Embedding(Embeddings):
