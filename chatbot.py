@@ -17,9 +17,6 @@ import re
 from langfuse import Langfuse
 from langfuse import observe
 import csv
-import os
-os.environ["CHROMA_DB_IMPL"] = "duckdb+parquet"
-from chromadb.config import Settings
 
 class LangchainE5Embedding(Embeddings):
     def __init__(self, model_name="intfloat/multilingual-e5-large", device=None):
@@ -37,17 +34,10 @@ api_keys = []
 
 embedding_function = LangchainE5Embedding()
 
-from chromadb import PersistentClient
-
-client = PersistentClient(
-    path="./chroma_e5_database",
-    settings=Settings(chroma_db_impl="duckdb+parquet")
-)
-
 vectorstore = Chroma(
-    client=client,
-    collection_name="beetax_collection_v2",
-    embedding_function=embedding_function
+    persist_directory="./chroma_e5_database",
+    embedding_function=embedding_function,
+    collection_name="beetax_collection_v2"
 )
 
 load_dotenv(override=True)
