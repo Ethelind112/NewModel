@@ -41,4 +41,5 @@ toml==0.10.2
 urllib3_secure_extra==0.1.0
 uvloop==0.21.0
 zstandard==0.23.0
-langfuse==2.19.0
+langfuse==1.9.2
+openai==1.30.1
