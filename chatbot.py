@@ -35,11 +35,17 @@ api_keys = []
 
 embedding_function = LangchainE5Embedding()
 
+from chromadb import PersistentClient
+
+client = PersistentClient(
+    path="./chroma_e5_database",
+    settings=Settings(chroma_db_impl="duckdb+parquet")
+)
+
 vectorstore = Chroma(
-    persist_directory="./chroma_e5_database",
-    embedding_function=embedding_function,
+    client=client,
     collection_name="beetax_collection_v2",
-    client_settings=Settings(chroma_db_impl="duckdb+parquet")
+    embedding_function=embedding_function
 )
 
 load_dotenv(override=True)
