@@ -8,7 +8,7 @@ from langchain_core.documents import Document
 from sentence_transformers import SentenceTransformer
 from langchain_core.embeddings import Embeddings
 
-from langchain.vectorstores import Chroma
+from langchain_community.vectorstores import Chroma
 
 from langfuse.openai import OpenAI
 import os
