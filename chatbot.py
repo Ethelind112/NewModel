@@ -17,6 +17,8 @@ import re
 from langfuse import Langfuse
 from langfuse import observe
 import csv
+import os
+os.environ["CHROMA_DB_IMPL"] = "duckdb+parquet"
 from chromadb.config import Settings
 
 class LangchainE5Embedding(Embeddings):
