@@ -17,6 +17,7 @@ import re
 from langfuse import Langfuse
 from langfuse import observe
 import csv
+from chromadb.config import Settings
 
 class LangchainE5Embedding(Embeddings):
     def __init__(self, model_name="intfloat/multilingual-e5-large", device=None):
@@ -37,7 +38,8 @@ embedding_function = LangchainE5Embedding()
 vectorstore = Chroma(
     persist_directory="./chroma_e5_database",
     embedding_function=embedding_function,
-    collection_name="beetax_collection_v2"
+    collection_name="beetax_collection_v2",
+    client_settings=Settings(chroma_db_impl="duckdb+parquet")
 )
 
 load_dotenv(override=True)
